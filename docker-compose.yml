@@ -1,0 +1,22 @@
+services:
+  notification-rabbitmq:
+    image: rabbitmq:3-management
+    container_name: notification-rabbitmq
+    hostname: notification-rabbitmq
+    volumes:
+      - notification-rabbitmq-volume:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "user"
+      RABBITMQ_DEFAULT_PASS: "password"
+
+volumes:
+  notification-rabbitmq-volume:
+    driver: local
+
+networks:
+  notification-rabbitmq-network:
+    name: notification-rabbitmq-network
+    driver: bridge
