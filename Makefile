@@ -6,7 +6,7 @@ build:
 	USER_ID=$(USER_ID) GROUP_ID=$GROUP_ID docker build . -t notification-microservice
 
 make listen:
-	USER_ID=$(USER_ID) GROUP_ID=$GROUP_ID \
+	@USER_ID=$(USER_ID) GROUP_ID=$GROUP_ID \
 		docker run --rm --init -v $(CURRENT_DIR):/app \
 		--network notification-microservice_default \
 		--name notification-microservice -u $(USER_ID):$(GROUP_ID) \
