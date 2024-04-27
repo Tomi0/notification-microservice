@@ -8,6 +8,11 @@ Build the image
 make build
 ```
 
+Copy .env.local.example to .env.local
+```bash
+cp .env.local.example .env.local
+```
+
 Start Rabbitmq
 ```bash
 make up

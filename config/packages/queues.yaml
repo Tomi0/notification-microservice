@@ -1,0 +1,7 @@
+parameters:
+  queue.name: '%env(QUEUE_NAME)%'
+  queue.host: '%env(QUEUE_HOST)%'
+  queue.port: '%env(QUEUE_PORT)%'
+  queue.user: '%env(QUEUE_USER)%'
+  queue.password: '%env(QUEUE_PASSWORD)%'
+
