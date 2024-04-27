@@ -18,5 +18,11 @@ up:
 down:
 	docker compose down
 
+cache-clear:
+	docker run -it -u $(USER_ID):$(GROUP_ID) -v $(CURRENT_DIR):/app notification-microservice php bin/console cache:clear
+
+dump-autoload:
+	docker run -it -u $(USER_ID):$(GROUP_ID) -v $(CURRENT_DIR):/app notification-microservice composer dump-autoload
+
 bash:
 	docker exec -it -u $(USER_ID):$(GROUP_ID) notification-microservice /bin/sh

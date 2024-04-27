@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Infrastructure\UI\Console;
+namespace Notifications\Infrastructure\UI\Console;
 
-use App\Application\Service\NotificationRequest\RequestNotification;
-use App\Application\Service\NotificationRequest\RequestNotificationInput;
+use Notifications\Application\Service\NotificationRequest\RequestNotification;
+use Notifications\Application\Service\NotificationRequest\RequestNotificationInput;
 use Exception;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;

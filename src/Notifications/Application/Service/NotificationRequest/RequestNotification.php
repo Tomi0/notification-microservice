@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Service\NotificationRequest;
+namespace Notifications\Application\Service\NotificationRequest;
 
 class RequestNotification
 {
