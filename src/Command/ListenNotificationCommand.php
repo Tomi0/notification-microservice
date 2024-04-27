@@ -17,12 +17,12 @@ use Throwable;
 #[AsCommand(name: 'notifications:listen')]
 class ListenNotificationCommand extends Command
 {
-    private ContainerBagInterface $params;
+    private ContainerBagInterface $containerBag;
 
-    public function __construct(ContainerBagInterface $params)
+    public function __construct(ContainerBagInterface $containerBag)
     {
         parent::__construct();
-        $this->params = $params;
+        $this->containerBag = $containerBag;
     }
 
     /**
@@ -32,11 +32,11 @@ class ListenNotificationCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $queueName = $this->params->get('queue.name');
-        $queueHost = $this->params->get('queue.host');
-        $queuePort = $this->params->get('queue.port');
-        $queueUser = $this->params->get('queue.user');
-        $queuePassword = $this->params->get('queue.password');
+        $queueName = $this->containerBag->get('queue.name');
+        $queueHost = $this->containerBag->get('queue.host');
+        $queuePort = $this->containerBag->get('queue.port');
+        $queueUser = $this->containerBag->get('queue.user');
+        $queuePassword = $this->containerBag->get('queue.password');
 
         $connection = new AMQPStreamConnection(
             $queueHost,
