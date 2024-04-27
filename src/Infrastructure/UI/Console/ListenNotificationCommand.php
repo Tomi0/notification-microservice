@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\Infrastructure\UI\Console;
 
 use Exception;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
