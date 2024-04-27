@@ -2,6 +2,8 @@
 
 namespace App\Infrastructure\UI\Console;
 
+use App\Application\Service\NotificationRequest\RequestNotification;
+use App\Application\Service\NotificationRequest\RequestNotificationInput;
 use Exception;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
@@ -13,16 +15,20 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Throwable;
+use UnexpectedValueException;
 
 #[AsCommand(name: 'notifications:listen')]
 class ListenNotificationCommand extends Command
 {
     private ContainerBagInterface $containerBag;
+    private RequestNotification $requestNotification;
 
-    public function __construct(ContainerBagInterface $containerBag)
+    public function __construct(ContainerBagInterface $containerBag,
+                                RequestNotification   $requestNotification)
     {
         parent::__construct();
         $this->containerBag = $containerBag;
+        $this->requestNotification = $requestNotification;
     }
 
     /**
@@ -51,7 +57,16 @@ class ListenNotificationCommand extends Command
         $output->writeln(" [*] Waiting for messages on queue: " . $queueName);
 
         $callback = function (AMQPMessage $msg) use ($output) {
-            $output->writeln(" [x] Message received from routing key: " . $msg->getRoutingKey());
+            $routingKey = $msg->getRoutingKey();
+            if ( ! $routingKey) {
+                throw new UnexpectedValueException("Routing key not found");
+            }
+            $output->writeln(
+                $this->requestNotification->handle(new RequestNotificationInput(
+                    $routingKey,
+                    $msg->getBody()
+                ))
+            );
         };
 
         $channel->basic_consume($queueName, '', false, true, false, false, $callback);
