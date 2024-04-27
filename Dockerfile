@@ -12,4 +12,4 @@ WORKDIR /app
 
 COPY . /app
 
-RUN docker-php-ext-install pdo_mysql sockets
+RUN docker-php-ext-install pdo pdo_mysql sockets

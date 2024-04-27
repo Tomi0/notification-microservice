@@ -1,4 +1,16 @@
 services:
+  notification-database:
+    image: mysql:8.0
+    container_name: notification-database
+    volumes:
+      - notification-database-volume:/var/lib/mysql
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "notifications"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
   notification-rabbitmq:
     image: rabbitmq:3-management
     container_name: notification-rabbitmq
@@ -14,6 +26,8 @@ services:
 
 volumes:
   notification-rabbitmq-volume:
+    driver: local
+  notification-database-volume:
     driver: local
 
 networks:
