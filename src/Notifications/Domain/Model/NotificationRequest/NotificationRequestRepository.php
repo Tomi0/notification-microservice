@@ -1,6 +1,6 @@
 <?php
 
-namespace Notifications\Domain\Models\NotificationRequest;
+namespace Notifications\Domain\Model\NotificationRequest;
 
 interface NotificationRequestRepository
 {

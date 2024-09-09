@@ -11,22 +11,19 @@ services:
       MYSQL_DATABASE: "notifications"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "password"
-  notification-rabbitmq:
-    image: rabbitmq:3-management
-    container_name: notification-rabbitmq
-    hostname: notification-rabbitmq
+  notification-microservice:
+    image: notification-microservice:latest
+    container_name: notification-microservice
     volumes:
-      - notification-rabbitmq-volume:/var/lib/rabbitmq
+      - ./:/var/www/html
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "8080:80"
+    depends_on:
+      - notification-database
     environment:
-      RABBITMQ_DEFAULT_USER: "user"
-      RABBITMQ_DEFAULT_PASS: "password"
+      NEW_UID: "${USER_ID}"
 
 volumes:
-  notification-rabbitmq-volume:
-    driver: local
   notification-database-volume:
     driver: local
 

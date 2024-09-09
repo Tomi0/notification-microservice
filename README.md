@@ -13,12 +13,12 @@ Copy .env.local.example to .env.local
 cp .env.local.example .env.local
 ```
 
-Start Rabbitmq
+Start microservice
 ```bash
-make up
+make start
 ```
 
-Start listening for messages
+For stopping microservice
 ```bash
-make listen
+make stop
 ```
