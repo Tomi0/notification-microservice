@@ -10,7 +10,8 @@
 
         <field name="keyName" column="keyName" type="string" length="255" nullable="false" unique="false" />
         <field name="messageBody" column="messageBody" type="string" length="1000" nullable="false" unique="false" />
-        <field name="occurredOn" column="occurredOn" type="datetime" nullable="false" unique="false" />
+        <field name="createdAt" column="createdAt" type="datetime" nullable="false" unique="false" />
+        <field name="updatedAt" column="updatedAt" type="datetime" nullable="false" unique="false" />
     </entity>
 
 </doctrine-mapping>

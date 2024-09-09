@@ -9,13 +9,16 @@ class NotificationRequest
     private string $id;
     private string $keyName;
     private string $messageBody;
-    private DateTime $occurredOn;
+    private DateTime $createdAt;
+    private DateTime $updatedAt;
 
     public function __construct(string $id, string $keyName, string $messageBody)
     {
         $this->id = $id;
         $this->keyName = $keyName;
         $this->messageBody = $messageBody;
+        $this->createdAt = new DateTime();
+        $this->updatedAt = new DateTime();
     }
 
     public function id(): string
@@ -34,8 +37,13 @@ class NotificationRequest
         return $this->messageBody;
     }
 
-    public function occurredOn(): DateTime
+    public function createdAt(): DateTime
     {
-        return $this->occurredOn;
+        return $this->createdAt;
+    }
+
+    public function updatedAt(): DateTime
+    {
+        return $this->updatedAt;
     }
 }

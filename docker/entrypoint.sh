@@ -4,10 +4,10 @@ if [ "$NEW_UID" != "" ]; then
 fi
 
 if [ "$APP_ENV" == "prod" ]; then
-    /bin/bash -c "composer dump-env prod"
+    /bin/bash -u NotificationUser -c "composer dump-env prod"
 fi
 
-/bin/bash -c "php bin/console cache:clear"
+/bin/bash -u NotificationUser -c "php bin/console cache:clear"
 
 service nginx start
 php-fpm
