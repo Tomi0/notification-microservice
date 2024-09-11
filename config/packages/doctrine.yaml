@@ -20,6 +20,10 @@ doctrine:
                 type: xml
                 dir: '%kernel.project_dir%/src/Notifications/Infrastructure/Doctrine/Persistence/Mapping'
                 prefix: 'Notifications\Domain\Model'
+            Authentication:
+                type: xml
+                dir: '%kernel.project_dir%/src/Authentication/Infrastructure/Doctrine/Persistence/Mapping'
+                prefix: 'Authentication\Domain\Model'
         controller_resolver:
             auto_mapping: true
 

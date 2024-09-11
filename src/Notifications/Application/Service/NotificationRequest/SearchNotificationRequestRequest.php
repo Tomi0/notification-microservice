@@ -2,7 +2,7 @@
 
 namespace Notifications\Application\Service\NotificationRequest;
 
-class SearchNotificationRequestRequest
+readonly class SearchNotificationRequestRequest
 {
 
 }

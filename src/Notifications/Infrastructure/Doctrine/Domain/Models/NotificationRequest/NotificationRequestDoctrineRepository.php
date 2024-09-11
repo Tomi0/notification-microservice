@@ -4,8 +4,8 @@ namespace Notifications\Infrastructure\Doctrine\Domain\Models\NotificationReques
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Notifications\Domain\Models\NotificationRequest\NotificationRequest;
-use Notifications\Domain\Models\NotificationRequest\NotificationRequestRepository;
+use Notifications\Domain\Model\NotificationRequest\NotificationRequest;
+use Notifications\Domain\Model\NotificationRequest\NotificationRequestRepository;
 
 class NotificationRequestDoctrineRepository extends ServiceEntityRepository implements NotificationRequestRepository
 {

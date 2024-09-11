@@ -13,10 +13,14 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
+    Authentication\:
+        resource: '../src/Authentication/'
     Notifications\:
         resource: '../src/Notifications/'
+    SharedKernel\:
+        resource: '../src/SharedKernel/'
         exclude:
-            - '../src/Notifications/Infrastructure/Kernel.php'
+            - '../src/SharedKernel/Infrastructure/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -1,6 +1,6 @@
 <?php
 
-namespace Notifications\Infrastructure;
+namespace SharedKernel\Infrastructure;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
