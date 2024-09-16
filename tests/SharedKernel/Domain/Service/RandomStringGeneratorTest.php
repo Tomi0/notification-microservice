@@ -29,4 +29,22 @@ class RandomStringGeneratorTest extends TestCase
 
         $this->assertGreaterThan(16, strlen($result));
     }
+
+    public function testReturnValueIsRandom(): void
+    {
+        $returnValues = [];
+
+        $numberOfStrings = 500;
+
+        for ($i = 0; $i < $numberOfStrings; $i++) {
+            $returnValues[] = $this->randomStringGenerator->execute();
+        }
+
+        $uniqueValues = array_unique($returnValues);
+
+        $this->assertEquals(
+            $numberOfStrings,
+            count($uniqueValues)
+        );
+    }
 }
