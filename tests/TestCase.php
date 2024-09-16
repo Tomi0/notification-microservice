@@ -11,7 +11,5 @@ class TestCase extends KernelTestCase
         self::bootKernel([
             'debug'       => false,
         ]);
-
-//        self::bootKernel();
     }
 }

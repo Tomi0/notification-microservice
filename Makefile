@@ -19,3 +19,9 @@ bash-root:
 
 test:
 	docker exec -it notification-microservice php bin/phpunit --testdox
+
+coverage:
+	docker exec -e XDEBUG_MODE=coverage -it notification-microservice php bin/phpunit --coverage-text
+
+coverage-html:
+	docker exec -e XDEBUG_MODE=coverage -it notification-microservice php bin/phpunit --coverage-html var/CodeCoverage
