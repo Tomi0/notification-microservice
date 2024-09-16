@@ -9,6 +9,7 @@ class TestCase extends KernelTestCase
     protected function setUp(): void
     {
         self::bootKernel([
+            'environment' => 'test',
             'debug'       => false,
         ]);
     }

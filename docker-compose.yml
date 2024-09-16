@@ -11,6 +11,18 @@ services:
       MYSQL_DATABASE: "notifications"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "password"
+    networks:
+      - notification-network
+  notification-database-testing:
+    image: mysql:8.0
+    container_name: notification-database-testing
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "notifications_test"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+    networks:
+      - notification-network
   notification-microservice:
     image: notification-microservice:latest
     container_name: notification-microservice
@@ -22,12 +34,14 @@ services:
       - notification-database
     environment:
       NEW_UID: "${USER_ID}"
+    networks:
+      - notification-network
 
 volumes:
   notification-database-volume:
     driver: local
 
 networks:
-  notification-rabbitmq-network:
-    name: notification-rabbitmq-network
+  notification-network:
+    name: notification-network
     driver: bridge
