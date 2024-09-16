@@ -8,8 +8,11 @@
             <generator strategy="NONE"/>
         </id>
 
-        <field name="deliveryChannel" column="deliveryChannel" type="string" length="255" nullable="false" unique="false" />
-        <field name="to" column="to" type="string" length="255" nullable="false" unique="false" />
+        <field name="deliveryChannel"
+               column="deliveryChannel"
+               type="DeliveryChannelType"
+               length="50" nullable="false" unique="false" />
+        <field name="to" column="`to`" type="string" length="255" nullable="false" unique="false" />
         <field name="subject" column="subject" type="string" length="255" nullable="true" unique="false" />
         <field name="content" column="content" type="text" nullable="false" unique="false" />
         <field name="userId" column="userId" type="string" length="50" nullable="false" unique="false" />

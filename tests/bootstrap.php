@@ -15,4 +15,5 @@ if ($_SERVER['APP_DEBUG']) {
 (new \Symfony\Component\Filesystem\Filesystem())->remove(__DIR__ . '/../var/cache/test');
 
 // executes the "php bin/console cache:clear" command
-passthru('php bin/console --env=test doctrine:migrations:migrate -n');
+passthru('php bin/console --env=test cache:clear -q');
+passthru('php bin/console --env=test doctrine:migrations:migrate -n -q');

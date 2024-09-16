@@ -8,6 +8,8 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+        types:
+            DeliveryChannelType: Notifications\Infrastructure\Doctrine\Domain\Models\DeliveryChannel\DeliveryChannelType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -25,7 +27,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Authentication/Infrastructure/Doctrine/Persistence/Mapping'
                 prefix: 'Authentication\Domain\Model'
         controller_resolver:
-            auto_mapping: true
+            auto_mapping: false
 
 when@test:
     doctrine:

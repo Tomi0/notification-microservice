@@ -18,6 +18,11 @@ Start microservice
 make start
 ```
 
+Run tests
+```bash
+make test
+```
+
 For stopping microservice
 ```bash
 make stop

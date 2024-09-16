@@ -2,3 +2,8 @@ HealthCheck:
     methods: GET
     path: /health-check
     controller: SharedKernel\Infrastructure\UI\Controller\HealthCheckController
+
+RequestNotification:
+    methods: POST
+    path: /notification-request
+    controller: Notifications\Infrastructure\UI\Controller\RequestNotificationController
