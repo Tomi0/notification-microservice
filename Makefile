@@ -13,5 +13,9 @@ stop:
 
 bash:
 	docker exec -it -u $(USER_ID):$(GROUP_ID) notification-microservice /bin/bash
+
 bash-root:
 	docker exec -it notification-microservice /bin/bash
+
+test:
+	docker exec -it notification-microservice php bin/phpunit --testdox
