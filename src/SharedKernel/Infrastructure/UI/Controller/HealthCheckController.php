@@ -1,6 +1,6 @@
 <?php
 
-namespace Notifications\Infrastructure\UI\Controller;
+namespace SharedKernel\Infrastructure\UI\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

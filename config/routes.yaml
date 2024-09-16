@@ -1,4 +1,4 @@
 HealthCheck:
     methods: GET
     path: /health-check
-    controller: Notifications\Infrastructure\UI\Controller\HealthCheckController
+    controller: SharedKernel\Infrastructure\UI\Controller\HealthCheckController
