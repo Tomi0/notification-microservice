@@ -1,4 +1,5 @@
 /var
 /vendor
 /.env.*.local
+/.env.local
 /.idea

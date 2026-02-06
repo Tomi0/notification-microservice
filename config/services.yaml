@@ -20,5 +20,7 @@ services:
         exclude:
             - '../src/SharedKernel/Infrastructure/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    # If you have a specific Command directory in a layer:
+    Authentication\Infrastructure\UI\Console\Commands\:
+        resource: '../src/Authentication/Infrastructure/UI/Console/Commands/'
+        tags: ['console.command']

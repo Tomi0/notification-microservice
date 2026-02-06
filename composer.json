@@ -7,14 +7,15 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/dbal": "^3",
-        "doctrine/doctrine-bundle": "^2.14",
-        "doctrine/doctrine-migrations-bundle": "^3.4",
-        "doctrine/orm": "^3.3",
-        "ramsey/uuid": "^4.7",
+        "doctrine/dbal": "^3.10.4",
+        "doctrine/doctrine-bundle": "^2.18.2",
+        "doctrine/doctrine-migrations-bundle": "^3.7",
+        "doctrine/orm": "^3.6.2",
+        "php-amqplib/php-amqplib": "^v3.7.4",
+        "ramsey/uuid": "^4.9.2",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.10",
         "symfony/framework-bundle": "7.2.*",
         "symfony/runtime": "7.2.*",
         "symfony/yaml": "7.2.*"
@@ -72,15 +73,15 @@
         }
     },
     "require-dev": {
-        "captainhook/captainhook-phar": "^5.25",
-        "dama/doctrine-test-bundle": "^8.2",
-        "doctrine/doctrine-fixtures-bundle": "^4.1",
-        "friendsofphp/php-cs-fixer": "^3.75",
-        "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^9.5",
+        "captainhook/captainhook-phar": "^5.27.5",
+        "dama/doctrine-test-bundle": "^8.2.2",
+        "doctrine/doctrine-fixtures-bundle": "^4.3.1",
+        "friendsofphp/php-cs-fixer": "^3.93.1",
+        "phpstan/phpstan": "^2.1.38",
+        "phpunit/phpunit": "^9.6.34",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
-        "symfony/maker-bundle": "^1.62",
-        "symfony/phpunit-bridge": "^7.2"
+        "symfony/maker-bundle": "^1.65.1",
+        "symfony/phpunit-bridge": "^7.4.3"
     }
 }

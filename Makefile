@@ -1,23 +1,23 @@
-NEW_USER_ID := $(shell id -u)
-NEW_GROUP_ID := $(shell id -g)
-
 build:
-	docker build -t ddd-symfony-skeleton:latest .
+	docker build --build-arg USER_ID=$(shell id -u) --build-arg GROUP_ID=$(shell id -g)  -t notification-microservice:latest .
 
 start:
-	NEW_USER_ID=$(NEW_USER_ID) NEW_GROUP_ID=$(NEW_GROUP_ID) docker compose up -d
+	docker compose up
 
 stop:
-	NEW_USER_ID=$(NEW_USER_ID) NEW_GROUP_ID=$(NEW_GROUP_ID) docker compose down
+	docker compose down
 
 bash:
-	docker exec -it -u $(NEW_USER_ID):$(NEW_GROUP_ID) ddd-symfony-skeleton bash
+	docker exec -it notification-microservice bash
 
 test:
-	docker exec -it -u $(NEW_USER_ID):$(NEW_GROUP_ID) ddd-symfony-skeleton php bin/console cache:clear --silent
-	docker exec -it -u $(NEW_USER_ID):$(NEW_GROUP_ID) ddd-symfony-skeleton php bin/console doctrine:migrations:migrate --no-interaction --silent
-	docker exec -it -u $(NEW_USER_ID):$(NEW_GROUP_ID) ddd-symfony-skeleton php vendor/bin/phpstan analyse -c phpstan.dist.neon
-	docker exec -it -u $(NEW_USER_ID):$(NEW_GROUP_ID) ddd-symfony-skeleton php bin/phpunit --testdox
+	docker exec -it notification-microservice php bin/console cache:clear --silent
+	docker exec -it notification-microservice php bin/console doctrine:migrations:migrate --no-interaction --silent
+	docker exec -it notification-microservice php vendor/bin/phpstan analyse -c phpstan.dist.neon
+	docker exec -it notification-microservice php bin/phpunit --testdox
 
 php-cs-fixer:
-	docker exec -it -u $(NEW_USER_ID):$(NEW_GROUP_ID) -e PHP_CS_FIXER_IGNORE_ENV=1 ddd-symfony-skeleton ./vendor/bin/php-cs-fixer fix src
+	docker exec -it -e PHP_CS_FIXER_IGNORE_ENV=1 notification-microservice ./vendor/bin/php-cs-fixer fix src
+
+composer-install:
+	docker run -it --rm -u $(shell id -u):$(shell id -g) -v $(PWD):/app -w /app composer:2.8.8 composer install

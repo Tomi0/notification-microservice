@@ -1,16 +1,14 @@
 services:
-  ddd-symfony-skeleton:
-    image: ddd-symfony-skeleton:latest
-    container_name: ddd-symfony-skeleton
+  notification-microservice:
+    image: notification-microservice:latest
+    container_name: notification-microservice
     volumes:
       - ./:/var/www/html
-    ports:
-      - "8000:80"
-    environment:
-      NEW_USER_ID: "${NEW_USER_ID}"
-      NEW_GROUP_ID: "${NEW_GROUP_ID}"
     networks:
       - project-network
+    depends_on:
+      - database
+      - database-testing
   database:
     image: mariadb:11.7
     container_name: database
@@ -18,7 +16,7 @@ services:
       - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: ddd_symfony_skeleton
+      MYSQL_DATABASE: notification
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_password
     volumes:
@@ -32,7 +30,7 @@ services:
       - database-testing-volume:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: ddd_symfony_skeleton_test
+      MYSQL_DATABASE: notification_test
       MYSQL_USER: db_user_test
       MYSQL_PASSWORD: db_password_test
     networks:
