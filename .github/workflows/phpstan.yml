@@ -1,0 +1,28 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: phpstan
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    services:
+      php-fpm:
+        image: bitnami/php-fpm:8.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: PHPStan
+        env:
+          APP_ENV: test
+        run: |
+          composer install
+          php vendor/bin/phpstan analyse -c phpstan.dist.neon

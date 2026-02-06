@@ -1,0 +1,5 @@
+{
+    "run-mode": "docker",
+    "run-exec": "docker exec -u 1000:1000 ddd-symfony-skeleton",
+    "run-path": "vendor//bin//captainhook"
+}

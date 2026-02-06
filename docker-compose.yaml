@@ -1,0 +1,50 @@
+services:
+  ddd-symfony-skeleton:
+    image: ddd-symfony-skeleton:latest
+    container_name: ddd-symfony-skeleton
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8000:80"
+    environment:
+      NEW_USER_ID: "${NEW_USER_ID}"
+      NEW_GROUP_ID: "${NEW_GROUP_ID}"
+    networks:
+      - project-network
+  database:
+    image: mariadb:11.7
+    container_name: database
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: ddd_symfony_skeleton
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+    volumes:
+      - database-volume:/var/lib/mysql
+    networks:
+      - project-network
+  database-testing:
+    image: mariadb:11.7
+    container_name: database-testing
+    volumes:
+      - database-testing-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: ddd_symfony_skeleton_test
+      MYSQL_USER: db_user_test
+      MYSQL_PASSWORD: db_password_test
+    networks:
+      - project-network
+
+volumes:
+  database-volume:
+    driver: local
+  database-testing-volume:
+    driver: local
+
+networks:
+  project-network:
+    name: project-network
+    driver: bridge
