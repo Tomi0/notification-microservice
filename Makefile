@@ -2,7 +2,10 @@ build:
 	docker build --build-arg USER_ID=$(shell id -u) --build-arg GROUP_ID=$(shell id -g)  -t notification-microservice:latest .
 
 start:
-	docker compose up
+	docker compose up -d rabbitmq database database-testing
+
+listen:
+	docker compose up notification-microservice
 
 stop:
 	docker compose down

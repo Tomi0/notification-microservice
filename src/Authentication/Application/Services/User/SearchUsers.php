@@ -5,6 +5,7 @@ namespace Authentication\Application\Services\User;
 use Authentication\Domain\Models\User\User;
 use Authentication\Domain\Models\User\UserRepository;
 use SharedKernel\Application\Services\ApplicationService;
+use SharedKernel\Application\Services\ApplicationServiceRequest;
 
 class SearchUsers implements ApplicationService
 {
@@ -18,7 +19,7 @@ class SearchUsers implements ApplicationService
     /**
      * @return User[]
      */
-    public function handle(): array
+    public function handle(ApplicationServiceRequest $request): array
     {
         return $this->userRepository->search();
     }

@@ -1,0 +1,5 @@
+parameters:
+  rabbitmq.host: '%env(RABBITMQ_HOST)%'
+  rabbitmq.port: '%env(RABBITMQ_PORT)%'
+  rabbitmq.user: '%env(RABBITMQ_USER)%'
+  rabbitmq.password: '%env(RABBITMQ_PASSWORD)%'
